@@ -1,0 +1,453 @@
+/* Holo-Guide Kabakoo - Brand Design System */
+@import url('https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;600;700&display=swap');
+
+* {
+  box-sizing: border-box;
+}
+
+/* ===== UI CONTAINER - 100% OPAQUE BACKGROUND (BRAND CONSTRAINT #1) ===== */
+#ui-container {
+  position: fixed;
+  inset: 0;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  height: 100dvh;
+  background: #F8F3EA;
+  /* Solid opaque - strictly hides AR camera feed until click */
+  background-color: #F8F3EA;
+  z-index: 10;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 24px 20px;
+  font-family: 'Rubik', 'Lato', sans-serif;
+  overflow: hidden;
+  pointer-events: auto;
+  transition: opacity 0.6s cubic-bezier(0.4, 0, 0.2, 1), visibility 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+#ui-container.hidden {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+/* ===== DECORATIVE BLOBS - Light Purple accents #C3A5C7 ===== */
+.deco-blob {
+  position: absolute;
+  border-radius: 50%;
+  background: #C3A5C7;
+  pointer-events: none;
+  filter: blur(0px);
+  opacity: 0.18;
+}
+
+.deco-blob-1 {
+  width: 420px;
+  height: 420px;
+  top: -120px;
+  right: -140px;
+  opacity: 0.14;
+  animation: floatBlob 7s ease-in-out infinite;
+  border-radius: 50%;
+}
+
+.deco-blob-2 {
+  width: 320px;
+  height: 320px;
+  bottom: -100px;
+  left: -110px;
+  opacity: 0.12;
+  animation: floatBlob 8.5s ease-in-out infinite reverse;
+  border-radius: 50%;
+}
+
+.deco-blob-3 {
+  width: 180px;
+  height: 180px;
+  top: 55%;
+  right: 12%;
+  opacity: 0.08;
+  animation: floatBlob 6s ease-in-out infinite 1s;
+  border-radius: 50%;
+}
+
+/* ===== WELCOME CARD - Heavily Rounded 32px ===== */
+#accueil-screen {
+  position: relative;
+  background: #FFFFFF;
+  border-radius: 32px;
+  padding: 36px 28px 28px;
+  width: 100%;
+  max-width: 420px;
+  text-align: center;
+  pointer-events: auto;
+  box-shadow:
+    0 20px 60px rgba(85, 65, 93, 0.12),
+    0 8px 24px rgba(195, 165, 199, 0.20),
+    0 0 0 1px rgba(195, 165, 199, 0.18);
+  border: 1px solid rgba(195, 165, 199, 0.15);
+  overflow: hidden;
+  animation: cardEnter 0.9s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+/* subtle top accent line */
+#accueil-screen::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 64px;
+  height: 5px;
+  background: #C3A5C7;
+  border-radius: 999px;
+  margin-top: 14px;
+  opacity: 0.9;
+}
+
+/* ===== BADGE - Pill-shaped ===== */
+.badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  background: rgba(195, 165, 199, 0.22);
+  color: #55415D;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  padding: 8px 14px;
+  border-radius: 999px;
+  margin-top: 8px;
+  margin-bottom: 18px;
+  border: 1px solid rgba(195, 165, 199, 0.30);
+  animation: fadeInUp 0.6s ease both 0.2s;
+}
+
+/* ===== TITLE - Dark Purple #55415D ===== */
+#accueil-screen .title,
+#accueil-screen h1 {
+  color: #55415D;
+  font-family: 'Rubik', sans-serif;
+  font-size: clamp(26px, 7vw, 32px);
+  font-weight: 700;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  margin: 0;
+  animation: fadeInUp 0.6s ease both 0.35s;
+}
+
+#accueil-screen .title span {
+  color: #55415D;
+}
+
+/* ===== SUBTITLE - Dark Purple ===== */
+.subtitle {
+  color: #55415D;
+  font-size: 15.5px;
+  font-weight: 500;
+  line-height: 1.4;
+  margin: 10px 0 0;
+  opacity: 0.85;
+  letter-spacing: 0.01em;
+  animation: fadeInUp 0.6s ease both 0.5s;
+}
+
+/* ===== DIVIDER - Light Purple #C3A5C7 ===== */
+.divider {
+  width: 56px;
+  height: 4px;
+  background: #C3A5C7;
+  border-radius: 999px;
+  margin: 20px auto;
+  opacity: 0.9;
+  animation: fadeInUp 0.6s ease both 0.6s, dividerGrow 0.7s cubic-bezier(0.22, 1, 0.36, 1) both 0.65s;
+}
+
+/* ===== INSTRUCTION CARD - Rounded 24px ===== */
+.instruction-card {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  background: #F8F3EA;
+  background-color: #F8F3EA;
+  border: 1.5px solid rgba(195, 165, 199, 0.28);
+  border-radius: 24px;
+  padding: 16px 18px;
+  margin: 0;
+  text-align: left;
+  box-shadow: 0 4px 12px rgba(195, 165, 199, 0.10);
+  animation: fadeInUp 0.6s ease both 0.7s;
+}
+
+.instruction-icon {
+  flex-shrink: 0;
+  width: 44px;
+  height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #FFFFFF;
+  border: 1px solid rgba(195, 165, 199, 0.25);
+  border-radius: 50%;
+  font-size: 20px;
+  line-height: 1;
+  box-shadow: 0 2px 8px rgba(195, 165, 199, 0.15);
+}
+
+.instruction-text,
+.instruction-card p {
+  color: #55415D;
+  font-size: 14.5px;
+  font-weight: 500;
+  line-height: 1.5;
+  margin: 0;
+  flex: 1;
+}
+
+/* legacy p fallback if not using card wrapper */
+#accueil-screen > p {
+  color: #55415D;
+}
+
+/* ===== CTA BUTTON - Yellow/Gold #F9D58B, Pill-shaped ===== */
+#start-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  width: 100%;
+  background: #F9D58B;
+  background-color: #F9D58B;
+  color: #55415D;
+  border: none;
+  border-radius: 999px;
+  padding: 18px 32px;
+  font-family: 'Rubik', sans-serif;
+  font-size: 17px;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  line-height: 1;
+  margin-top: 24px;
+  cursor: pointer;
+  box-shadow:
+    0 8px 20px rgba(249, 213, 139, 0.42),
+    0 4px 10px rgba(85, 65, 93, 0.08),
+    0 0 0 1px rgba(249, 213, 139, 0.9) inset;
+  transition: transform 0.22s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.22s ease, filter 0.22s ease;
+  animation: fadeInUp 0.6s ease both 0.85s, pulseGold 2.2s infinite 1.6s;
+  -webkit-tap-highlight-color: transparent;
+  user-select: none;
+}
+
+#start-button:hover {
+  transform: translateY(-2px);
+  box-shadow:
+    0 12px 28px rgba(249, 213, 139, 0.50),
+    0 6px 14px rgba(85, 65, 93, 0.10),
+    0 0 0 1px rgba(249, 213, 139, 1) inset;
+  filter: brightness(1.02);
+}
+
+#start-button:focus-visible {
+  outline: 3px solid rgba(195, 165, 199, 0.55);
+  outline-offset: 3px;
+}
+
+#start-button:active {
+  transform: scale(0.96);
+  transition-duration: 0.12s;
+  box-shadow:
+    0 4px 12px rgba(249, 213, 139, 0.35),
+    0 2px 6px rgba(85, 65, 93, 0.08);
+}
+
+.btn-arrow {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  background: #FFFFFF;
+  color: #55415D;
+  border-radius: 50%;
+  font-size: 16px;
+  font-weight: 700;
+  flex-shrink: 0;
+  box-shadow: 0 2px 6px rgba(85, 65, 93, 0.12);
+  transition: transform 0.22s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+#start-button:hover .btn-arrow {
+  transform: translateX(3px);
+}
+
+/* ===== MICROCOPY ===== */
+.microcopy {
+  color: #55415D;
+  font-size: 11.5px;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  opacity: 0.55;
+  margin: 14px 0 0;
+  animation: fadeInUp 0.6s ease both 1s;
+}
+
+/* ===== ANIMATIONS ===== */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes cardEnter {
+  from {
+    opacity: 0;
+    transform: translateY(28px) scale(0.96);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes pulseGold {
+  0% {
+    box-shadow:
+      0 8px 20px rgba(249, 213, 139, 0.42),
+      0 4px 10px rgba(85, 65, 93, 0.08),
+      0 0 0 0 rgba(249, 213, 139, 0.65);
+  }
+  70% {
+    box-shadow:
+      0 8px 20px rgba(249, 213, 139, 0.42),
+      0 4px 10px rgba(85, 65, 93, 0.08),
+      0 0 0 14px rgba(249, 213, 139, 0);
+  }
+  100% {
+    box-shadow:
+      0 8px 20px rgba(249, 213, 139, 0.42),
+      0 4px 10px rgba(85, 65, 93, 0.08),
+      0 0 0 0 rgba(249, 213, 139, 0);
+  }
+}
+
+@keyframes floatBlob {
+  0%, 100% {
+    transform: translateY(0) scale(1);
+  }
+  50% {
+    transform: translateY(-14px) scale(1.015);
+  }
+}
+
+@keyframes dividerGrow {
+  from {
+    transform: scaleX(0);
+    opacity: 0;
+  }
+  to {
+    transform: scaleX(1);
+    opacity: 0.9;
+  }
+}
+
+/* ===== RESPONSIVE - Mobile-first ===== */
+@media (max-width: 380px) {
+  #accueil-screen {
+    padding: 30px 20px 22px;
+    border-radius: 28px;
+  }
+  #accueil-screen .title,
+  #accueil-screen h1 {
+    font-size: 24px;
+  }
+  .subtitle {
+    font-size: 14.5px;
+  }
+  .instruction-card {
+    padding: 14px 16px;
+    gap: 12px;
+    border-radius: 20px;
+  }
+  #start-button {
+    padding: 16px 24px;
+    font-size: 16px;
+  }
+}
+
+@media (min-width: 480px) {
+  #accueil-screen {
+    padding: 40px 32px 32px;
+  }
+}
+
+/* ===== REDUCED MOTION ===== */
+@media (prefers-reduced-motion: reduce) {
+  #accueil-screen,
+  .badge,
+  #accueil-screen .title,
+  #accueil-screen h1,
+  .subtitle,
+  .divider,
+  .instruction-card,
+  #start-button,
+  .microcopy,
+  .deco-blob {
+    animation: none !important;
+    transition: none !important;
+  }
+  #start-button:hover {
+    transform: none;
+  }
+}
+
+#brand-logo {
+  width: 100px; /* Adjusted for PNG proportions */
+  height: auto;
+  margin: 0 auto 20px auto;
+  display: block;
+  animation: fadeInDown 0.6s ease-out forwards;
+}
+
+@keyframes fadeInDown {
+  from {
+    opacity: 0;
+    transform: translateY(-15px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ===== PLACEMENT UI - FIX Causes 1 & 2 (pointer-events) ===== */
+#placement-ui-container {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 9998;
+}
+#placement-ui-container .instruction,
+#placement-ui-container .instruction-text,
+#placement-ui-container .instruction-card,
+#placement-ui-container p,
+#placement-ui-container .divider,
+#placement-ui-container .badge {
+  pointer-events: none;
+}
+#btn-valider {
+  pointer-events: auto;
+  touch-action: manipulation;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+}

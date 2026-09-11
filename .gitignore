@@ -1,0 +1,10 @@
+# Holo-Guide Kabakoo - Gitignore
+*.zip
+*.rar
+*.7z
+.DS_Store
+Thumbs.db
+.env
+.env.local
+node_modules/
+dist/

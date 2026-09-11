@@ -1,0 +1,23 @@
+{
+  "type": "PLANAR",
+  "properties": {
+    "top": 0,
+    "left": 0,
+    "width": 3024,
+    "height": 4032,
+    "isRotated": false,
+    "originalWidth": 3024,
+    "originalHeight": 4032
+  },
+  "imagePath": "image-targets/bokoso_luminance.jpg",
+  "metadata": null,
+  "name": "bokoso",
+  "resources": {
+    "originalImage": "bokoso_original.jpg",
+    "croppedImage": "bokoso_cropped.jpg",
+    "thumbnailImage": "bokoso_thumbnail.jpg",
+    "luminanceImage": "bokoso_luminance.jpg"
+  },
+  "created": 1789136727382,
+  "updated": 1789136727382
+}
